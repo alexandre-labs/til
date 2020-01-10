@@ -12,9 +12,27 @@ Ainda assim, eu quero alguns "guias" para um processo em três etapas:
 * til <data opcional> <titulo ou o que eu aprendi>
 * Escrever a descrição (com suporte a Markdown)
 * Completar o conteúdo com uma linha com apenas `TIL!`
-  
+
 Em background, a aplicação deve adicionar esse novo TIL para o diretório do dia; fazer um commit utilizando o titulo como mensagem; e atualizar os repositórios remotos (e.g. github e gitlab)
 
+#### Um exemplo do protótipo atual:
+
+```bash
+ ~> python cli.py "Criar um protótipo simples CLI para o TIL"
+-----------------------------------------------------------
+Today I learned: Criar um protótipo simples CLI para o TIL
+
+Description:
+
+
+Decidi escrever uma cli utilizando a biblioteca `Click`. O protótipo
+ficou bem simples e acho que consigo ter algo minimamente funcional
+até o final dessa semana.
+
+TIL!
+Today I learned: Criar um protótipo simples CLI para o TIL
+ - 2020-01-10
+```
 
 ## O que seria legal ter
 
