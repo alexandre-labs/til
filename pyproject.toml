@@ -15,6 +15,8 @@ ipython = "^7.11.1"
 pytest-cov = "^2.8.1"
 mypy = "^0.761"
 black = "^19.10b0"
+pytest-watch = "^4.2.0"
+hypothesis = "^5.1.2"
 
 [tool.poetry.scripts]
 til = "til.ports.cli:til"
