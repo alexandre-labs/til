@@ -23,7 +23,8 @@ class UseCaseResponse(abc.ABC):
 
 class UseCase(abc.ABC):
 
-    def __init__(self, repository=None):
+    def __init__(self, settings, repository=None):
+        self.settings = settings
         self.repository = repository
 
     @abc.abstractmethod
