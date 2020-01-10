@@ -12,7 +12,7 @@ click = "^7.0"
 pytest = "^5.2"
 
 [tool.poetry.scripts]
-til = "til.cli:til"
+til = "til.ports.cli:til"
 
 [build-system]
 requires = ["poetry>=0.12"]
