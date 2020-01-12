@@ -3,3 +3,4 @@
 [default.repositories.local]
 data_path = './data/repositories/local/'
 subdir_name_pattern = 'DD-MM-YYYY'
+til_file_extension = 'md'
