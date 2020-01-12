@@ -1,10 +1,13 @@
 import datetime
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 
 
-@dataclass
-class Learning:
+class Learning(BaseModel):
     """The main model in the TIL"""
+
     title: str
     description: str
     timestamp: datetime.datetime
+
+    class Config:
+        strict_models = True
