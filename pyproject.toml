@@ -8,6 +8,7 @@ authors = ["Alexandre <git@alexndr.dev>"]
 python = "^3.6"
 click = "^7.0"
 pydantic = "^1.3"
+dynaconf = "^2.2.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
