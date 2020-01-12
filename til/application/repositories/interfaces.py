@@ -3,9 +3,8 @@ import abc
 
 class LearningRepository(abc.ABC):
 
-    @abc.abstractmethod
-    def ping(self) -> bool:
-        return NotImplemented
+    def __init__(self, settings):
+        self.settings = settings
 
     @abc.abstractmethod
     def save(self, learning):
