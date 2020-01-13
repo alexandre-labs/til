@@ -6,25 +6,45 @@ import click
 import git
 from dynaconf import settings
 
+from til.application.usecases.register_a_til import RegisterTILRequest, RegisterTIL
+from til.infrastructure.repositories.local.learning import LearningRepository
+
 
 @click.command()
 @click.argument('title')
 def til(title):
 
-    click.clear()
     banner = f"Today I learned: {title}\n"
-    click.echo("-" * len(banner))
+    banner += "-" * len(banner)
     click.echo(banner)
 
-    click.echo("Description: \n\n")
+    click.echo("\nDescription: \n")
 
-    description = ""
+    description = f"{banner}\n"
     for line in sys.stdin:
         description += line
         if line.strip() == "TIL!":
+            description += "\n"
             break
 
-    click.echo(f"{banner} - {datetime.date.today()}")
+    uc = RegisterTIL(
+        settings=settings,
+        repository=LearningRepository(settings=settings)
+    )
+
+    request = RegisterTILRequest.create(
+        title, description, timestamp=datetime.datetime.now()
+    )
+
+    result = uc.execute(resquest=request)
+
+    if result:
+        click.echo("Done!")
+        click.echo(result.result)
+    else:
+        click.echo("Error: ")
+        click.echo(result.result)
+        click.Abort()
 
 
 @click.command('repo-init')
