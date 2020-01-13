@@ -1,6 +1,8 @@
 # TIL
 Today I learned  - personal and small knowledge base.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/71a73d64d9ac4441a1e2e442224a641f)](https://www.codacy.com/manual/0x41e/til?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alexandre/til&amp;utm_campaign=Badge_Grade)
+
 ## 4Fun
 
 There is a better and complete TIL app: https://github.com/hashrocket/tilex
