@@ -20,6 +20,8 @@ I would like to type `til "some simple title"`; write some description and
 - Run `til_manage repo-init local`
 - Run `til "install a cli til app"` =p
 
+[![asciicast](https://asciinema.org/a/RYAeHCW1JQEL4Gtqa1HJ5p4cL.svg)](https://asciinema.org/a/RYAeHCW1JQEL4Gtqa1HJ5p4cL)
+
 ### Roadmap
 
 - [ ] Create a simple README
