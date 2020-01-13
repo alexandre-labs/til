@@ -2,6 +2,6 @@
 title_lenght = 70
 
 [default.repositories.local]
-data_path = '/tmp/data/repositories/local/'
+data_path = '/tmp/til-data/repositories/local/'
 subdir_name_pattern = 'DD-MM-YYYY'
 file_extension = 'md'
