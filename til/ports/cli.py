@@ -36,7 +36,7 @@ def til(title):
         title, description, timestamp=datetime.datetime.now()
     )
 
-    result = uc.execute(resquest=request)
+    result = uc.execute(request=request)
 
     if result:
         click.echo("Done!")
