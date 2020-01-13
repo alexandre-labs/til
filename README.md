@@ -1,43 +1,33 @@
 # TIL
 Today I learned  - personal and small knowledge base.
 
-> TODO: escrever um README em inglês
+## 4Fun
 
-## Ideia principal
+There is a better and complete TIL app: https://github.com/hashrocket/tilex
 
-O que eu quero é uma maneira simples (e provavelmente a partir de um terminal) de conseguir registrar algo que eu aprendi.
-Sem precisar fazer um login, carregar uma pagina complexa e etc.
-Ainda assim, eu quero alguns "guias" para um processo em três etapas:
+I just start to write this one because I want some CLI option and it looked fun.
 
-* til <data opcional> <titulo ou o que eu aprendi>
-* Escrever a descrição (com suporte a Markdown)
-* Completar o conteúdo com uma linha com apenas `TIL!`
+## The main idea
 
-Em background, a aplicação deve adicionar esse novo TIL para o diretório do dia; fazer um commit utilizando o titulo como mensagem; e atualizar os repositórios remotos (e.g. github e gitlab)
+I would like to type `til "some simple title"`; write some description and
+ finish it with a `"TIL!"`. Just it. Without to care about the git add/commit/push, etc.
 
-#### Um exemplo do protótipo atual:
+### Instalation
 
-```bash
- ~> python cli.py "Criar um protótipo simples CLI para o TIL"
------------------------------------------------------------
-Today I learned: Criar um protótipo simples CLI para o TIL
+- Create a virtualenv using your preferred method
+- Install poetry (also using your preferred method)
+- Run `poetry install`
+- Run `til_manage repo-init local`
+- Run `til "install a cli til app"` =p
 
-Description:
+### Roadmap
 
-
-Decidi escrever uma cli utilizando a biblioteca `Click`. O protótipo
-ficou bem simples e acho que consigo ter algo minimamente funcional
-até o final dessa semana.
-
-TIL!
-Today I learned: Criar um protótipo simples CLI para o TIL
- - 2020-01-10
-```
-
-## O que seria legal ter
-
-* Tags. Ajudaria a gerar algumas informações e também buscar os dados.
-* Possibilidade de citar o caminho de uma imagem (e.g. um screenshot) e o til copiar para o diretório
-* Gerar uma versão tar.gz da base toda
-* Um sistema simples de busca com full text search
-* Um aplicativo para celular com os mesmos recursos (e com isso sincronizar os dispositivos e repositórios)
+- [ ] Create a simple README
+- [ ] Initial CLI to register learnings
+- [ ] Allow adding tags to query/separate the learnings
+- [ ] Query the learnings
+- [ ] Register the learning in the background (limit the time using the cli to only
+the writing time. Do all the other parts in the background (e.g. write the file,
+ add to the repository)
+- [ ] Add some stats to query
+- [ ] Sync. with a GitHub/Gitlab remote repository (backup?)
