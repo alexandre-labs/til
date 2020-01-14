@@ -4,14 +4,15 @@ import uuid
 
 import git
 
+from til.domain.learning import Learning
 from til.application.repositories.interfaces import LearningRepository as ILearningRepo
 
 
 class LearningRepository(ILearningRepo):
-    def _generate_file_id(self):
+    def _generate_file_id(self) -> uuid.UUID:
         return uuid.uuid4()
 
-    def _get_learning_base_path(self, learning):
+    def _get_learning_base_path(self, learning: Learning) -> pathlib.Path:
         """Generates the base path from the learning timestamp."""
 
         base_path = self.settings.REPOSITORIES.LOCAL.DATA_PATH
@@ -24,7 +25,9 @@ class LearningRepository(ILearningRepo):
             )
         )
 
-    def _get_learning_final_path(self, learning_base_path, learning_id):
+    def _get_learning_final_path(
+        self, learning_base_path: pathlib.Path, learning_id: uuid.UUID
+    ) -> pathlib.Path:
         return pathlib.Path(
             os.path.join(
                 learning_base_path,
@@ -32,12 +35,17 @@ class LearningRepository(ILearningRepo):
             )
         )
 
-    def _write(self, learning, learning_path):
+    def _write(self, learning: Learning, learning_path: pathlib.Path) -> None:
 
         with open(learning_path, "w") as f:
             f.write(learning.description)
 
-    def _commit(self, learning, learning_base_path, learning_final_path):
+    def _commit(
+        self,
+        learning: Learning,
+        learning_base_path: pathlib.Path,
+        learning_final_path: pathlib.Path,
+    ) -> None:
         if not learning_final_path.exists():
             raise RuntimeError
 
@@ -54,7 +62,7 @@ class LearningRepository(ILearningRepo):
 
         os.chdir(cwd)
 
-    def save(self, learning):
+    def save(self, learning: Learning) -> pathlib.Path:
 
         learning_base_path = self._get_learning_base_path(learning)
         if not learning_base_path.exists():

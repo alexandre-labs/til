@@ -12,7 +12,7 @@ from til.infrastructure.repositories.local.learning import LearningRepository
 
 @click.command()
 @click.argument("title")
-def til(title):
+def til(title: str) -> None:
 
     banner = f"Today I learned: {title}\n"
     banner += "-" * len(banner)
@@ -32,7 +32,7 @@ def til(title):
     )
 
     request = RegisterTILRequest.create(
-        title, description, timestamp=datetime.datetime.now()
+        title=title, description=description, timestamp=datetime.datetime.now()
     )
 
     result = uc.execute(request=request)

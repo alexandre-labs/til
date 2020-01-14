@@ -1,17 +1,24 @@
 import datetime
+import typing as t
 
 from til.domain.learning import Learning
 from .interfaces import Error, InvalidRequest, Success, UseCase, ValidRequest
 
 
 class RegisterTILRequest(ValidRequest):
-    def __init__(self, learning):
+    learning: Learning
+
+    def __init__(self, learning) -> None:
         self.learning = learning
 
     @classmethod
-    def create(cls, title, description, timestamp):
+    def create(cls, **kwargs):
 
         invalid_request = InvalidRequest()
+
+        title = kwargs.get("title")
+        description = kwargs.get("description")
+        timestamp = kwargs.get("timestamp")
 
         if not isinstance(title, str):
             invalid_request.add_error("title", "Invalid title")
@@ -31,11 +38,13 @@ class RegisterTILRequest(ValidRequest):
 
 
 class RegisterTIL(UseCase):
-    def execute(self, request):
+    def execute(
+        self, request: t.Union[InvalidRequest, RegisterTILRequest]
+    ) -> t.Union[Error, Success]:
 
         if not request:
             return Error.build_from_invalid_request(request)
 
-        result = self.repository.save(request.learning)
+        result = self.repository.save(request.learning)  # type: ignore
 
         return Success(result=result)

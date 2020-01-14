@@ -8,4 +8,4 @@ class Learning:
 
     title: str
     description: str
-    timestamp: datetime.datetime
+    timestamp: datetime.date

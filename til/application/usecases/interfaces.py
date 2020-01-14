@@ -1,22 +1,23 @@
 import abc
+import typing as t
 
 
-# TODO: Add type hints
-#
-#
 class InvalidRequest:
-    def __init__(self):
+
+    errors: t.List[t.Dict[str, str]]
+
+    def __init__(self) -> None:
         self.errors = []
 
-    def __bool__(self):
+    def __bool__(self) -> bool:
         return False
 
-    def add_error(self, item, message):
+    def add_error(self, item: str, message: str) -> None:
         self.errors.append({item: message})
 
 
 class ValidRequest(abc.ABC):
-    def __bool__(self):
+    def __bool__(self) -> bool:
         return True
 
     @abc.abstractclassmethod
@@ -25,25 +26,25 @@ class ValidRequest(abc.ABC):
 
 
 class Response(abc.ABC):
-    def __init__(self, result):
+    def __init__(self, result: t.Any):
         self.result = result
 
     @abc.abstractmethod
-    def __bool__(self):
+    def __bool__(self) -> bool:
         return NotImplemented
 
 
 class Error(Response):
-    def __bool__(self):
+    def __bool__(self) -> bool:
         return False
 
     @classmethod
-    def build_from_invalid_request(cls, invalid_request):
+    def build_from_invalid_request(cls, invalid_request) -> "Error":
         return Error(result=invalid_request.errors)
 
 
 class Success(Response):
-    def __bool__(self):
+    def __bool__(self) -> bool:
         return True
 
 
