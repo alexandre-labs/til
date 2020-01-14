@@ -10,6 +10,7 @@ click = "^7.0"
 pydantic = "^1.3"
 dynaconf = "^2.2.2"
 gitpython = "^3.0.5"
+flake8 = "^3.7.9"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -19,6 +20,7 @@ mypy = "^0.761"
 black = "^19.10b0"
 pytest-watch = "^4.2.0"
 hypothesis = "^5.1.2"
+pre-commit = "^1.21.0"
 
 [tool.poetry.scripts]
 til = "til.ports.cli:til"
