@@ -5,7 +5,6 @@ from .interfaces import Error, InvalidRequest, Success, UseCase, ValidRequest
 
 
 class RegisterTILRequest(ValidRequest):
-
     def __init__(self, learning):
         self.learning = learning
 
@@ -26,15 +25,12 @@ class RegisterTILRequest(ValidRequest):
         if invalid_request.errors:
             return invalid_request
 
-        learning = Learning(
-            title=title, description=description, timestamp=timestamp
-        )
+        learning = Learning(title=title, description=description, timestamp=timestamp)
 
         return RegisterTILRequest(learning=learning)
 
 
 class RegisterTIL(UseCase):
-
     def execute(self, request):
 
         if not request:

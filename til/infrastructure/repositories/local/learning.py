@@ -8,7 +8,6 @@ from til.application.repositories.interfaces import LearningRepository as ILearn
 
 
 class LearningRepository(ILearningRepo):
-
     def _generate_file_id(self):
         return uuid.uuid4()
 
@@ -16,22 +15,26 @@ class LearningRepository(ILearningRepo):
         """Generates the base path from the learning timestamp."""
 
         base_path = self.settings.REPOSITORIES.LOCAL.DATA_PATH
-        return pathlib.Path(os.path.join(
-            base_path,
-            str(learning.timestamp.year),
-            str(learning.timestamp.month),
-            str(learning.timestamp.day)
-        ))
+        return pathlib.Path(
+            os.path.join(
+                base_path,
+                str(learning.timestamp.year),
+                str(learning.timestamp.month),
+                str(learning.timestamp.day),
+            )
+        )
 
     def _get_learning_final_path(self, learning_base_path, learning_id):
-        return pathlib.Path(os.path.join(
-            learning_base_path,
-            f"{learning_id}.{self.settings.REPOSITORIES.LOCAL.FILE_EXTENSION}"
-        ))
+        return pathlib.Path(
+            os.path.join(
+                learning_base_path,
+                f"{learning_id}.{self.settings.REPOSITORIES.LOCAL.FILE_EXTENSION}",
+            )
+        )
 
     def _write(self, learning, learning_path):
 
-        with open(learning_path, 'w') as f:
+        with open(learning_path, "w") as f:
             f.write(learning.description)
 
     def _commit(self, learning, learning_base_path, learning_final_path):
@@ -58,8 +61,7 @@ class LearningRepository(ILearningRepo):
             learning_base_path.mkdir(parents=True)
 
         learning_final_path = self._get_learning_final_path(
-            learning_base_path,
-            self._generate_file_id()
+            learning_base_path, self._generate_file_id()
         )
         if learning_final_path.exists():
             raise RuntimeError

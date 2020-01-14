@@ -11,7 +11,7 @@ from til.infrastructure.repositories.local.learning import LearningRepository
 
 
 @click.command()
-@click.argument('title')
+@click.argument("title")
 def til(title):
 
     banner = f"Today I learned: {title}\n"
@@ -28,8 +28,7 @@ def til(title):
             break
 
     uc = RegisterTIL(
-        settings=settings,
-        repository=LearningRepository(settings=settings)
+        settings=settings, repository=LearningRepository(settings=settings)
     )
 
     request = RegisterTILRequest.create(
@@ -47,12 +46,12 @@ def til(title):
         click.Abort()
 
 
-@click.command('repo-init')
-@click.argument('repo-name')
+@click.command("repo-init")
+@click.argument("repo-name")
 def repo_init(repo_name):
 
     # TODO: implement a better map between name and repo
-    if repo_name == 'local':
+    if repo_name == "local":
 
         til_data_path = pathlib.Path(settings.REPOSITORIES.LOCAL.DATA_PATH)
 

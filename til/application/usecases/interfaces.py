@@ -5,7 +5,6 @@ import abc
 #
 #
 class InvalidRequest:
-
     def __init__(self):
         self.errors = []
 
@@ -17,7 +16,6 @@ class InvalidRequest:
 
 
 class ValidRequest(abc.ABC):
-
     def __bool__(self):
         return True
 
@@ -27,7 +25,6 @@ class ValidRequest(abc.ABC):
 
 
 class Response(abc.ABC):
-
     def __init__(self, result):
         self.result = result
 
@@ -37,7 +34,6 @@ class Response(abc.ABC):
 
 
 class Error(Response):
-
     def __bool__(self):
         return False
 
@@ -47,13 +43,11 @@ class Error(Response):
 
 
 class Success(Response):
-
     def __bool__(self):
         return True
 
 
 class UseCase(abc.ABC):
-
     def __init__(self, settings, repository=None):
         self.settings = settings
         self.repository = repository
