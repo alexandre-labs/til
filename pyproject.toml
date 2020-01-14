@@ -21,6 +21,7 @@ black = "^19.10b0"
 pytest-watch = "^4.2.0"
 hypothesis = "^5.1.2"
 pre-commit = "^1.21.0"
+pytest-flake8 = "^1.0.4"
 
 [tool.poetry.scripts]
 til = "til.ports.cli:til"
