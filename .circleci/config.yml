@@ -30,11 +30,8 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install poetry
+            make install
             pip install codecov
-            poetry install
 
       - save_cache:
           paths:
