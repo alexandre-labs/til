@@ -30,6 +30,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
+            make venv
             make install
             pip install codecov
 
