@@ -42,7 +42,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            pytest tests
+            make test
             codecov
 
       - store_artifacts:
