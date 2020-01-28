@@ -1,17 +1,11 @@
-
-
-SHELL := /bin/bash
-
 venv:
-	python3 -m venv venv
-	source venv/bin/activate; pip install poetry
-install:
-	pip install poetry && poetry install
-install-venv:venv
-	source venv/bin/activate; poetry install
+	test -d /tmp/venv || python3 -m venv /tmp/venv
+	. /tmp/venv/bin/activate;pip install poetry
+install:venv
+	. /tmp/venv/bin/activate;poetry install
 dev:install
-	pre-commit install --install-hooks
+	. /tmp/venv/bin/activate;pre-commit install --install-hooks
 test:
-	poetry run py.test --cov=jus_brasil --cov-fail-under=90 && mypy --ignore-missing-imports til
+	. /tmp/venv/bin/activate;poetry run py.test --cov=til --cov-fail-under=90 && mypy --ignore-missing-imports til
 ptw:
-	poetry run ptw --runner "pytest --cov=til  --cov-report=html" tests/
+	. /tmp/venv/bin/activate && poetry run ptw --runner "pytest --cov=til  --cov-report=html" tests/

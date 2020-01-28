@@ -35,7 +35,7 @@ jobs:
 
       - save_cache:
           paths:
-            - ./venv
+            - /tmp/venv
           key: v1-dependencies-{{ checksum "pyproject.toml" }}
 
       # run tests!
