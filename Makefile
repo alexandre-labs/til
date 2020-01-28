@@ -1,8 +1,8 @@
 .ONESHELL:
 venv:
-	test -d venv || python3 -m venv venv
+	test -d venv || python3.8 -m venv venv
 poetry-setup:venv
-	. venv/bin/activate
+	test -d venv && . venv/bin/activate
 	pip install poetry
 install:poetry-setup
 	. venv/bin/activate
