@@ -12,9 +12,8 @@ dev:install
 	pre-commit install --install-hooks
 test:install
 	. venv/bin/activate
-	poetry run py.test tests/unit &&\
-	   	poetry run py.test tests/integration &&\
-	   	poetry run mypy --ignore-missing-imports til
+	poetry run py.test -x tests
+	poetry run mypy --ignore-missing-imports til
 cov:install
 	. venv/bin/activate
 	poetry run py.test --cov=til --cov-fail-under=90 tests
