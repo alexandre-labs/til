@@ -18,25 +18,12 @@ jobs:
     working_directory: ~/repo
 
     steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "pyproject.toml" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
 
       - run:
           name: install dependencies
           command: |
             make install
             pip install codecov
-
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "pyproject.toml" }}
 
       # run tests!
       - run:
